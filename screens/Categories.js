@@ -1,11 +1,17 @@
 // @flow
 
 import * as React from 'react';
-import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import { Button, Text } from 'native-base';
 import { defaultStyles } from '../styles/defaultStyles';
 import { CATEGORIES } from '../data/dummyData';
-import { colors } from '../constants/colors';
+import colors from '../constants/colors';
 
 type CategoriesProps = {
   navigation: Object,
@@ -21,7 +27,7 @@ const Categories = ({ navigation }: CategoriesProps): React.Node => {
       <TouchableOpacity
         style={styles.gridItem}
         onPress={() => {
-          navigation.navigate('CategoryMeals');
+          navigation.navigate('CategoryMeals', { categoryId: item.id });
         }}
       >
         <View>
@@ -38,6 +44,21 @@ const Categories = ({ navigation }: CategoriesProps): React.Node => {
       data={CATEGORIES}
     />
   );
+};
+
+const determineDevice = (iosOption, androidOption): string => {
+  if (Platform.OS === 'ios') {
+    return iosOption;
+  }
+  return androidOption;
+};
+
+Categories.navigationOptions = {
+  title: 'All Categories',
+  headerTintColor: determineDevice(colors.primary, 'white'),
+  headerStyle: {
+    backgroundColor: determineDevice('white', colors.primary),
+  },
 };
 
 export default Categories;
