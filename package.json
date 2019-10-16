@@ -5,17 +5,34 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "format": "prettier '**/*.js' --write",
+    "format:check": "prettier '**/*.js' --check",
+    "lint": "eslint",
+    "flow": "flow",
+    "lint:all": "npm run lint && npm run format:check",
     "eject": "expo eject"
   },
   "dependencies": {
     "expo": "^34.0.0",
+    "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.1.1"
+    "babel-preset-expo": "^5.1.1",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "flow-bin": "^0.109.0",
+    "flow-typed": "^2.6.1",
+    "husky": "^3.0.9",
+    "prettier": "^1.18.2"
   },
   "private": true
 }
